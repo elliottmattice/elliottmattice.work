@@ -1,0 +1,51 @@
+# Site Settings
+title: Elliott Mattice
+description: Executive advisor and systems-risk strategist specializing in upstream risk translation
+url: "https://elliottmattice.work"
+baseurl: ""
+
+# Author
+author:
+  name: Elliott Mattice
+  email: contact@elliottmattice.work
+  linkedin: emattice
+
+# Build settings
+markdown: kramdown
+permalink: /:title/
+timezone: America/New_York
+
+# Collections
+collections:
+  frameworks:
+    output: true
+    permalink: /frameworks/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "frameworks"
+    values:
+      layout: "page"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md

@@ -1,0 +1,556 @@
+---
+layout: default
+---
+
+<style>
+/* Homepage Specific Styles */
+
+/* Hero Section with Video */
+.hero {
+    padding: 120px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.25) 0%, rgba(26,26,26,0.35) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    line-height: 1.1;
+    color: #ffffff;
+    text-shadow: 0 3px 16px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.hero h1 span {
+    color: var(--purple-light);
+    text-shadow: 0 0 24px rgba(118, 75, 162, 0.5), 0 3px 16px rgba(0,0,0,0.7);
+}
+
+.hero .problem-lines {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #F5F5F5;
+    max-width: 760px;
+    margin: 0 auto 40px;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.hero .tagline {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-300);
+    letter-spacing: 0.03em;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* Section Structure */
+.section {
+    padding: 60px 0;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.section-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+}
+
+.section h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+.section p {
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+    max-width: 720px;
+}
+
+/* About Section */
+.about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-top: 32px;
+}
+
+.about-photo {
+    position: sticky;
+    top: 24px;
+}
+
+.headshot {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.about-content p strong {
+    color: var(--purple);
+    font-weight: 600;
+}
+
+/* Framework Cards */
+.frameworks {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.framework-card {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    border-left: 3px solid var(--border-color);
+    background: transparent;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.framework-card:hover {
+    border-left-color: var(--purple);
+    background: var(--bg-card);
+}
+
+.framework-num {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--purple);
+    flex-shrink: 0;
+    width: 36px;
+}
+
+.framework-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+}
+
+.framework-card p {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin: 0 0 14px 0;
+}
+
+.framework-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0;
+}
+
+.framework-card li {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    padding-left: 18px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.framework-card li:before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--purple);
+}
+
+/* Pattern Recognition Table */
+.table-wrapper {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-card);
+    margin-top: 24px;
+}
+
+.pattern-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pattern-table thead th {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+}
+
+.pattern-table tbody tr {
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background 0.2s ease;
+}
+
+.pattern-table tbody tr:hover {
+    background: var(--bg-card-hover);
+}
+
+.pattern-table td {
+    padding: 14px 16px;
+    font-size: 0.85rem;
+    vertical-align: top;
+    color: var(--text-secondary);
+}
+
+.pattern-table td:first-child {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.metric-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--purple);
+    font-weight: 600;
+}
+
+.narrative-block {
+    padding: 24px;
+    border-left: 3px solid var(--purple);
+    background: var(--bg-card);
+    margin-top: 24px;
+}
+
+.narrative-block p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Contact CTA */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: var(--purple);
+    color: #fff;
+    border: 1px solid var(--purple);
+}
+
+.btn-primary:hover {
+    background: var(--purple-light);
+    border-color: var(--purple-light);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    border-color: var(--purple);
+    color: var(--purple);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 60vh;
+        padding: 80px 0 60px;
+    }
+    
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+    
+    .hero .problem-lines {
+        font-size: 1.0625rem;
+    }
+    
+    .hero-video-bg {
+        opacity: 0.5;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .about-photo {
+        position: relative;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    .framework-card {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+</style>
+
+<!-- Hero -->
+<section class="hero">
+    <!-- Video Background (add your video file to assets/videos/) -->
+    <!-- <video autoplay muted loop playsinline class="hero-video-bg">
+        <source src="/assets/videos/Blue-Tech-Futuristic-Artificial-Intelligence-Video.webm" type="video/webm">
+    </video> -->
+    <div class="hero-overlay"></div>
+    
+    <div class="container hero-content">
+        <h1>I translate upstream risk into <span>strategic foresight</span>.</h1>
+        <div class="problem-lines">
+            I'm Elliott Mattice. I specialize in converting geopolitical signals, policy developments, and power dynamics into early warning systems—enabling action while decision margin exists, not after strategic windows have closed.
+        </div>
+        <p class="tagline">Executive advisor | Systems-risk strategist | Creator of Upstream Risk Translation</p>
+    </div>
+</section>
+
+<!-- About -->
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-photo">
+                <!-- Replace with your actual headshot -->
+                <img src="https://via.placeholder.com/400x400/667eea/ffffff?text=Your+Photo" alt="Elliott Mattice" class="headshot">
+            </div>
+            <div class="about-content">
+                <div class="section-label">About</div>
+                <h2>Elliott Mattice</h2>
+                <p>I serve as an executive advisor and systems-risk strategist specializing in the translation of upstream risk—geopolitical signals, policy shifts, and power dynamics—into operationally defensible action for security and technology leadership.</p>
+                <p>Twenty-five years leading federal authorization programs, enterprise GRC architecture, and cybersecurity operations across defense, healthcare, and federal contracting revealed a consistent pattern: organizations operating reactively against threats that signaled months in advance. Vendor failures preceded by geopolitical procurement shifts. Regulatory mandates telegraphed in draft comment periods. Audit findings shaped by incentive structures visible before assessment cycles began.</p>
+                <p>In response, I developed systematic frameworks for what I term <strong>Upstream Risk Translation</strong>—methodologies that formalize the conversion of early-stage signals into strategic decision intelligence. The objective is not prediction but rather the identification and exploitation of decision windows while margin still exists.</p>
+                <p>I deliver keynotes and workshops on geopolitical risk integration for cyber teams and leadership evolution in AI-augmented environments. Through <a href="https://exprima.io" style="color: var(--purple);">Exprima</a>, I advise organizations on CMMC readiness, FedRAMP authorization strategy, and the architecture of GRC programs designed to survive audit pressure while maintaining operational velocity.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- The Problem -->
+<section class="section">
+    <div class="container">
+        <div class="section-label">The Problem</div>
+        <h2>Most security leaders operate as downstream observers</h2>
+        <p>Across federal agencies, defense contractors, and enterprise healthcare environments, a consistent pattern emerges: security leadership responding to risk after decision margin has narrowed to reactive postures.</p>
+        <p>By the time a vulnerability surfaces in your SIEM, multiple strategic windows have closed. The geopolitical procurement trend that reshaped vendor risk profiles. The regulatory comment period that signaled mandate direction. The audit incentive structure that predetermined finding categories.</p>
+        <p>These signals exist in observable form months prior to manifestation—in policy drafts, geopolitical developments, and stakeholder incentive mappings. Yet most organizations lack systematic translation mechanisms for converting upstream indicators into actionable intelligence.</p>
+        <p>The frameworks I developed address this gap directly.</p>
+    </div>
+</section>
+
+<!-- Frameworks -->
+<section class="section" id="frameworks">
+    <div class="container">
+        <div class="section-label">My Approach</div>
+        <h2>Upstream Risk Translation</h2>
+        <p>I have developed three systematic frameworks for identifying and acting on risk signals before they manifest in security operations. These methodologies formalize the conversion of geopolitical indicators, policy signals, and incentive structures into actionable strategic intelligence.</p>
+
+        <div class="frameworks">
+            <div class="framework-card">
+                <div class="framework-num">01</div>
+                <div>
+                    <h3>Geopolitical Risk Posture</h3>
+                    <p>This framework enables security organizations to integrate state actor incentive analysis, supply chain dependency mapping, and regulatory trend forecasting into threat intelligence workflows—identifying vulnerability patterns before they surface in traditional security tooling. The methodology emphasizes systematic signal analysis over speculative assessment.</p>
+                    <ul>
+                        <li>Vendor exposure assessment through geopolitical lens</li>
+                        <li>Policy signal detection 6-12 months before publication</li>
+                        <li>Game theory primer for anticipating actor behavior</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="framework-card">
+                <div class="framework-num">02</div>
+                <div>
+                    <h3>Policy Translation Method</h3>
+                    <p>This framework provides structured analysis of regulatory intent prior to formal publication—converting policy drafts, comment periods, and legislative signals into technical implementation roadmaps. Organizations gain months (not weeks) of preparation advantage while competitors await final rule publication.</p>
+                    <ul>
+                        <li>FedRAMP evolution and CMMC program changes</li>
+                        <li>HIPAA/GDPR requirement interpretation</li>
+                        <li>Federal procurement mandate anticipation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="framework-card">
+                <div class="framework-num">03</div>
+                <div>
+                    <h3>Incentive Analysis for Control Design</h3>
+                    <p>This framework applies stakeholder incentive mapping (auditors, engineers, executives) to GRC program architecture—designing controls that survive audit scrutiny while maintaining operational velocity. The underlying thesis: incentive structures predict compliance outcomes more reliably than audit findings or tool selections.</p>
+                    <ul>
+                        <li>Why compliance-in-operations outperforms checkbox theater</li>
+                        <li>Proactive control design vs reactive remediation</li>
+                        <li>Behavioral prediction through incentive mapping</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pattern Recognition -->
+<section class="section">
+    <div class="container">
+        <div class="section-label">Proof</div>
+        <h2>Pattern Recognition Across High-Consequence Environments</h2>
+        
+        <div class="table-wrapper">
+            <table class="pattern-table">
+                <thead>
+                    <tr>
+                        <th>Environments</th>
+                        <th>Outcomes</th>
+                        <th>Capabilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Federal Agencies</td>
+                        <td><span class="metric-badge">40+</span> Authorizations</td>
+                        <td>Authorization Programs</td>
+                    </tr>
+                    <tr>
+                        <td>Enterprise Healthcare</td>
+                        <td><span class="metric-badge">25%</span> Risk Reduction</td>
+                        <td>Geopolitical Risk Integration</td>
+                    </tr>
+                    <tr>
+                        <td>Defense Contractors</td>
+                        <td><span class="metric-badge">10x</span> Workforce Scale</td>
+                        <td>GRC Architecture</td>
+                    </tr>
+                    <tr>
+                        <td>Growth Companies</td>
+                        <td><span class="metric-badge">$350M+</span> Portfolio</td>
+                        <td>Executive Advisory</td>
+                    </tr>
+                    <tr>
+                        <td>Clinical Research</td>
+                        <td><span class="metric-badge">400%</span> Org Growth</td>
+                        <td>Vendor Risk Frameworks</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="narrative-block">
+            <p>These frameworks have been applied across federal agencies (TSA, DCSA, DoD), multinational healthcare enterprises, defense prime contractors, and growth-stage organizations navigating CMMC and FedRAMP authorization pathways. The common thread: high-consequence environments where compliance failures terminate revenue streams and control deficiencies carry national security implications. In such contexts, upstream risk translation is not optional methodology—it represents the operational difference between mission continuity and catastrophic program failure.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Analysis (Blog Posts) -->
+<section class="section">
+    <div class="container">
+        <div class="section-label">Latest Analysis</div>
+        <h2>Recent Publications</h2>
+        
+        {% if site.posts.size > 0 %}
+        <div style="margin-top: 32px;">
+            {% for post in site.posts limit:3 %}
+            <div style="padding: 20px 0; border-bottom: 1px solid var(--border-subtle);">
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">
+                    {{ post.date | date: "%B %d, %Y" }}
+                </div>
+                <h3 style="font-size: 1.25rem; margin-bottom: 12px;">
+                    <a href="{{ post.url }}" style="color: var(--text-primary); text-decoration: none;">{{ post.title }}</a>
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: 12px;">
+                    {{ post.excerpt | strip_html | truncate: 200 }}
+                </p>
+                <a href="{{ post.url }}" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--purple); text-decoration: none;">
+                    Read full analysis →
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p style="color: var(--text-muted); margin-top: 24px;">Analysis posts coming soon. Check back for geopolitical → cyber insights.</p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+    <div class="container" style="text-align: center;">
+        <div class="section-label">Get In Touch</div>
+        <h2>Three Ways to Work Together</h2>
+        
+        <div class="btn-group">
+            <a href="mailto:contact@elliottmattice.work" class="btn btn-primary">Speaking Inquiries</a>
+            <a href="https://exprima.io" class="btn btn-secondary" target="_blank">Advisory Services</a>
+            <a href="/about/" class="btn btn-secondary">Executive Roles</a>
+        </div>
+
+        <div style="margin-top: 32px; font-size: 0.9rem; color: var(--text-secondary);">
+            <p><strong>Email:</strong> <a href="mailto:contact@elliottmattice.work" style="color: var(--purple);">contact@elliottmattice.work</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/emattice" target="_blank" style="color: var(--purple);">linkedin.com/in/emattice</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+12022624088" style="color: var(--purple);">(202) 262-4088</a></p>
+        </div>
+    </div>
+</section>

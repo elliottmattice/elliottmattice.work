@@ -1,0 +1,252 @@
+---
+layout: default
+---
+
+<style>
+/* Blog Post Styles */
+.post-header {
+    padding: 80px 0 40px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.post-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.post-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.post-excerpt {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.post-content {
+    padding: 60px 0;
+}
+
+.post-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 48px 0 20px;
+    color: var(--text-primary);
+}
+
+.post-content h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin: 32px 0 16px;
+    color: var(--text-primary);
+}
+
+.post-content p {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    color: var(--text-secondary);
+}
+
+.post-content ul, .post-content ol {
+    margin: 24px 0;
+    padding-left: 32px;
+}
+
+.post-content li {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+}
+
+.post-content a {
+    color: var(--purple);
+    text-decoration: none;
+    border-bottom: 1px solid var(--purple-dim);
+    transition: border-color 0.2s;
+}
+
+.post-content a:hover {
+    border-bottom-color: var(--purple-light);
+}
+
+.post-content blockquote {
+    border-left: 3px solid var(--purple);
+    padding: 20px 24px;
+    margin: 32px 0;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.post-content code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--purple-light);
+}
+
+.post-content pre {
+    background: var(--code-bg);
+    padding: 20px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 24px 0;
+    border: 1px solid var(--border-color);
+}
+
+.post-content pre code {
+    background: none;
+    padding: 0;
+    color: var(--text-secondary);
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 32px 0;
+    border: 1px solid var(--border-color);
+}
+
+.post-content hr {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 48px 0;
+}
+
+/* Download CTA */
+.download-cta {
+    padding: 24px;
+    border: 1px solid var(--purple-dim);
+    border-radius: 8px;
+    background: var(--bg-card);
+    margin: 32px 0;
+    text-align: center;
+}
+
+.download-cta h4 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.download-cta a {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--purple);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    margin-top: 8px;
+    border: none;
+}
+
+.download-cta a:hover {
+    background: var(--purple-light);
+}
+
+/* Post Footer */
+.post-footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+}
+
+.post-footer p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.share-btn {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: 8px 16px;
+    background: transparent;
+    color: var(--text-primary);
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.share-btn:hover {
+    border-color: var(--purple);
+    color: var(--purple);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title {
+        font-size: 2rem;
+    }
+    
+    .post-excerpt {
+        font-size: 1.125rem;
+    }
+}
+</style>
+
+<article>
+    <header class="post-header">
+        <div class="container">
+            <div class="post-meta">
+                {{ page.date | date: "%B %d, %Y" }}
+                {% if page.category %} · {{ page.category | capitalize }}{% endif %}
+            </div>
+            <h1 class="post-title">{{ page.title }}</h1>
+            {% if page.excerpt %}
+            <p class="post-excerpt">{{ page.excerpt }}</p>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="post-content">
+        <div class="container">
+            {{ content }}
+
+            {% if page.download %}
+            <div class="download-cta">
+                <h4>Download Full Framework</h4>
+                <p style="margin: 8px 0; color: var(--text-secondary); font-size: 0.9rem;">
+                    Get the complete methodology, templates, and implementation guide.
+                </p>
+                <a href="{{ page.download }}">Download PDF</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="container">
+            <p>Share this analysis:</p>
+            <div class="share-buttons">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" target="_blank" class="share-btn">LinkedIn</a>
+                <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text={{ page.title }}" target="_blank" class="share-btn">Twitter</a>
+                <a href="mailto:?subject={{ page.title }}&body={{ site.url }}{{ page.url }}" class="share-btn">Email</a>
+            </div>
+        </div>
+    </footer>
+</article>
