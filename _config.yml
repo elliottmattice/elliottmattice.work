@@ -1,8 +1,8 @@
 # Site Settings
 title: Elliott Mattice
 description: Executive advisor and systems-risk strategist specializing in upstream risk translation
-url: "https://elliottmattice.work"
-baseurl: ""
+url: "https://elliottmattice.github.io"
+baseurl: "/elliottmattice.work"
 
 # Author
 author:
